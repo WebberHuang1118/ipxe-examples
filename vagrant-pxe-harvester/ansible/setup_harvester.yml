@@ -16,7 +16,7 @@
 
   - name: install PXE server
     shell: >
-      vagrant up pxe_server
+      vagrant up pxe_server2
     register: pxe_server_installation_result
 
   - name: display PXE server installation result
@@ -25,7 +25,7 @@
 
   - name: get the IP address of pxe_server
     shell: |
-      vagrant ssh-config pxe_server 2>/dev/null | grep HostName | awk '{ print $2 }'
+      vagrant ssh-config pxe_server2 2>/dev/null | grep HostName | awk '{ print $2 }'
     register: get_pxe_server_ip_result
     until: get_pxe_server_ip_result != ""
     retries: 10
